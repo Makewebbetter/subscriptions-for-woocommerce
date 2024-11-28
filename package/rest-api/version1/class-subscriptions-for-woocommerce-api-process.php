@@ -48,6 +48,7 @@ if ( ! class_exists( 'Subscriptions_For_Woocommerce_Api_Process' ) ) {
 
 			if ( OrderUtil::custom_orders_table_usage_is_enabled() ) {
 				$args = array(
+					'numberposts' => -1,
 					'return' => 'ids',
 					'post_type'   => 'wps_subscriptions',
 					'meta_query' => array(
