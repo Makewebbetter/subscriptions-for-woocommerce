@@ -503,7 +503,7 @@ if ( ! class_exists( 'WPS_Sfw_PayPal_IPN_Handler' ) ) {
 					$parent_order = wc_get_order( $parent_order_id );
 					$billing_details = $parent_order->get_address( 'billing' );
 					$shipping_details = $parent_order->get_address( 'shipping' );
-
+					$parent_order_currency = $parent_order->get_currency();
 					$new_status = 'wc-wps_renewal';
 
 					$user_id = $parent_order->get_user_id();
@@ -518,6 +518,7 @@ if ( ! class_exists( 'WPS_Sfw_PayPal_IPN_Handler' ) ) {
 						'customer_id' => $user_id,
 					);
 					$wps_new_order = wc_create_order( $args );
+					$wps_new_order->set_currency( $parent_order_currency );
 
 					$_product = wc_get_product( $product_id );
 
